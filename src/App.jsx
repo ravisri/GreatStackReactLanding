@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Services from './components/Services'
+import Navbar from './components/Navbar'
 
 function App() {
+  const [theme, setTheme] =useState('light')
   const [count, setCount] = useState(0)
 
   const outlineRef = useRef(null)
@@ -40,7 +42,9 @@ useEffect(() => {
  }
 }, [])
   return (
-    <>
+    <div className='dark:bg-black relative'>
+  <Navbar theme={theme} setTheme={setTheme} />
+
   <Services/>
 
   {/* Custom Cursor Ring */}
@@ -49,7 +53,8 @@ useEffect(() => {
 
   {/* Custom Cursor Dot */}
   <div  ref={dotRef} className='fixed top-0 left-0 w-3 h-3 rounded-full bg-blue-800 pointer-events-none z-[9999]'  style={{transition:'transform 0.1s ease-out'}}></div>
-    </>
+    <div/>
+    </div>
   )
 }
 
